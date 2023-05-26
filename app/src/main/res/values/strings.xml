@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Expence Tracker</string>
+    <string name="todo">TODO</string>
 </resources>
