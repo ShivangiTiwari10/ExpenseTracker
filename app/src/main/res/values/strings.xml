@@ -3,4 +3,7 @@
     <string name="todo">TODO</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="monthaly">Monthaly</string>
+    <string name="yearly">Yearly</string>
+    <string name="daily">Daily</string>
 </resources>
