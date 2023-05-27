@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav.xml"
+    app:startDestination="@id/dailyFragment">
+
+
+    <fragment
+        android:id="@+id/dailyFragment"
+        android:name="com.example.expencetracker.fragments.DailyFragment"
+        android:label="fragment_daily"
+        tools:layout="@layout/fragment_daily">
+        <action
+            android:id="@+id/action_dailyFragment_to_monthlyFragment"
+            app:destination="@id/monthlyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/monthlyFragment"
+        android:name="com.example.expencetracker.fragments.MonthlyFragment"
+        android:label="fragment_monthly"
+        tools:layout="@layout/fragment_monthly">
+        <action
+            android:id="@+id/action_monthlyFragment_to_yearlyFragment"
+            app:destination="@id/yearlyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yearlyFragment"
+        android:name="com.example.expencetracker.fragments.YearlyFragment"
+        android:label="fragment_yearly"
+        tools:layout="@layout/fragment_yearly" />
+</navigation>
