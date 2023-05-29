@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatEditText
 import com.example.expencetracker.R
 import com.example.expencetracker.databinding.FragmentDailyBinding
 
@@ -37,9 +38,15 @@ class DailyFragment : Fragment() {
             .create()
         dialog.window?.setGravity(Gravity.BOTTOM)
 
+        val btnA = dialog.findViewById<AppCompatEditText>(R.id.textInputLayout)
+        val btnB = dialog.findViewById<AppCompatEditText>(R.id.amountInputLayout)
+
         binding.floatingActionButton.setOnClickListener {
+
             dialog.show()
         }
+
+
         return (binding.root)
 
     }
