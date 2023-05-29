@@ -6,4 +6,8 @@
     <string name="monthaly">Monthaly</string>
     <string name="yearly">Yearly</string>
     <string name="daily">Daily</string>
+    <string name="enter_text">Enter text</string>
+    <string name="ammount">Amount</string>
+    <string name="expense_debit">Expense(Debit)</string>
+    <string name="income_credit">Income(Credit)</string>
 </resources>

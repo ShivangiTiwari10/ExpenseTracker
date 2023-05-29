@@ -40,7 +40,6 @@ class ExpenseActivity : AppCompatActivity() {
                 }
                 3 -> {
                     tab.text = "Yearly"
-
                 }
             }
         }.attach()

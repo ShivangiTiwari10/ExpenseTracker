@@ -21,7 +21,7 @@ class viewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):F
             1 -> DailyFragment()
             2 -> MonthlyFragment()
             3 -> YearlyFragment()
-            else -> throw IllegalArgumentException("Invalid tab position: $position")
+            else -> DailyFragment()
         }
     }
 }
