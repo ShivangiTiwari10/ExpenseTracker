@@ -1,4 +1,4 @@
-package com.example.expencetracker
+package com.example.expencetracker.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
