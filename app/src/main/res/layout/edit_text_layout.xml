@@ -1,85 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#B0BFA6"
-    android:elevation="7dp"
+    android:id="@+id/card_layout"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:backgroundTint="#DEDBE4"
     app:cardCornerRadius="12dp">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            >
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/incomebtn"
-                android:layout_width="160dp"
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="@string/income_credit"
-                app:cornerRadius="15dp" />
+                android:layout_alignParentStart="true"
+                android:padding="8dp"
+                android:scrollHorizontally="true"
+                android:text="@string/text"
+                android:textColor="#202020"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/expencebtn"
-                android:layout_width="160dp"
+            <TextView
+                android:id="@+id/tv_Amount"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/expense_debit"
-                app:cornerRadius="15dp" />
-        </LinearLayout>
+                android:maxLines="10"
+                android:padding="8dp"
+                android:text="@string/amount"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
 
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/textInputLayout"
-            android:layout_width="150dp"
+
+        <TextView
+            android:id="@+id/tv_Detail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:hint="@string/enter_text"
-            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="8dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/detail"
+            android:textColor="#4C4C4C"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+    </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/amountInputLayout"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="7dp"
-            android:hint="@string/ammount"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:contentDescription="@string/todo"
-            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/amountInputLayout"
-            app:srcCompat="@drawable/ic_baseline_check_circle_24" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/descibe_here"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
