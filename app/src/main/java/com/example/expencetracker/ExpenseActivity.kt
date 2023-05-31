@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.expencetracker.databinding.ActivityExpenseBinding
+import com.example.expencetracker.adapter.viewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ExpenseActivity : AppCompatActivity() {

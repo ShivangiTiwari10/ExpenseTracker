@@ -12,4 +12,7 @@
     <string name="income_credit">Income(Credit)</string>
     <string name="descibe_here">Descibe here</string>
     <string name="delete">delete</string>
+    <string name="detail">Detail</string>
+    <string name="text">Text</string>
+    <string name="amount">Amount</string>
 </resources>
