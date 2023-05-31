@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#B0BFA6"
+    android:elevation="7dp"
+    tools:context=".EditNotes">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/incomebtn"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/income_credit"
+                app:cornerRadius="15dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/expencebtn"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/expense_debit"
+                app:cornerRadius="15dp" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/textInputLayout"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:hint="@string/enter_text"
+            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:autofillHints=""
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/amountInputLayout"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="7dp"
+            android:hint="@string/ammount"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:autofillHints=""
+            android:inputType="number" />
+
+
+        <ImageView
+            android:id="@+id/imageCheck"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:contentDescription="@string/todo"
+            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/amountInputLayout"
+            app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+        <EditText
+            android:id="@+id/textDetail"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/descibe_here"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            android:autofillHints=""
+            android:inputType="text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
