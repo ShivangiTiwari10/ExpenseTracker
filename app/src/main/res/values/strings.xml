@@ -11,4 +11,5 @@
     <string name="expense_debit">Expense(Debit)</string>
     <string name="income_credit">Income(Credit)</string>
     <string name="descibe_here">Descibe here</string>
+    <string name="delete">delete</string>
 </resources>
