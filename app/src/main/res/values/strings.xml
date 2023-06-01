@@ -15,4 +15,6 @@
     <string name="detail">Detail</string>
     <string name="text">Text</string>
     <string name="amount">Amount</string>
+    <string name="total_expense">Total Expense</string>
+    <string name="total_income">Total Income</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.example.expencetracker.fragments
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -50,7 +49,6 @@ class DailyFragment : Fragment(), DailyfragmentAdapter.NotesClickedListener {
 
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
