@@ -17,4 +17,6 @@
     <string name="amount">Amount</string>
     <string name="total_expense">Total Expense</string>
     <string name="total_income">Total Income</string>
+    <string name="expense">Expense</string>
+    <string name="income">Income</string>
 </resources>
