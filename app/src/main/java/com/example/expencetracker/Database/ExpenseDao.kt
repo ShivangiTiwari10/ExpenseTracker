@@ -2,23 +2,34 @@ package com.example.expencetracker.Database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.expencetracker.model.Person
+import com.example.expencetracker.model.Expense
+import com.example.expencetracker.model.Income
 
 
 @Dao
 interface ExpenseDao {
 
+    @Query("SELECT * from expense_tracker")
+    fun getAllExpence(): LiveData<List<Expense>>
+
+    @Query("SELECT * from income_tracker")
+    fun getAllIncome(): LiveData<List<Income>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(expense: Person)
+    suspend fun insert(expense: Expense)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertIncome(income: Income)
+
+    @Query("SELECT SUM(amount) FROM expense_tracker")
+    fun getTotalExpense(): LiveData<Double>
+
+    @Query("SELECT SUM(amount) FROM income_tracker")
+    fun getTotalIncome(): LiveData<Double>
     @Delete
-    suspend fun delete(expense: Person)
-
-    @Query("SELECT * from expense_tracker ORDER BY id ASC")
-    fun getAllExpence(): LiveData<List<Person>>
-
-
-    @Query("UPDATE expense_tracker  SET  text=:text,amount=:amount,detail =:detail WHERE id =:id")
-    suspend fun update(id: Int?, text: String?, detail: String?, amount: String?)
+    suspend fun delete(expense: Expense)
+    @Delete
+    suspend fun delete(income: Income)
 
 
 
