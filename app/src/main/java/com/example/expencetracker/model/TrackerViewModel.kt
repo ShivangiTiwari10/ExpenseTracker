@@ -9,11 +9,13 @@ import com.example.expencetracker.Database.TrackerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class trackerViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: TrackerRepository
+    private var repository: TrackerRepository
 
-    val allExpense: LiveData<List<Person>>
+    val allExpense: LiveData<List<Expense>>
+    val allInCome: LiveData<List<Income>>
 
     init {
         val dao = TrackerDatabase.getDataBase(application).getexpenceDao()
@@ -21,17 +23,19 @@ class trackerViewModel(application: Application) : AndroidViewModel(application)
         allExpense = repository.allExpense
     }
 
-    fun deleteExpence(expense: Person) = viewModelScope.launch(Dispatchers.IO) {
+    init {
+        val dao = TrackerDatabase.getDataBase(application).getexpenceDao()
+        repository = TrackerRepository(dao)
+        allInCome = repository.allIncome
 
-        repository.delete(expense)
     }
 
-    fun insert(expense: Person) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(expense)
+    fun addExpense(expense: Expense) = viewModelScope.launch(Dispatchers.IO) {
+        repository.addExpense(expense)
     }
 
-    fun update(expense: Person) = viewModelScope.launch (Dispatchers.IO){
-        repository.update(expense)
+    fun addIncome(income: Income) = viewModelScope.launch(Dispatchers.IO) {
+        repository.addIncome(income)
     }
 
 }
