@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.expencetracker.Database.TrackerDatabase
 import com.example.expencetracker.EditNotes
 import com.example.expencetracker.adapter.ExpenseAdapter
+import com.example.expencetracker.adapter.IncomeAdapter
 import com.example.expencetracker.databinding.FragmentDailyBinding
 import com.example.expencetracker.model.Expense
 import com.example.expencetracker.model.Income
@@ -29,6 +30,7 @@ class DailyFragment : Fragment() {
     private lateinit var incomeAdapter: ArrayAdapter<Income>
 
     private var expenseTotal: Double = 0.0
+    private var incomeTotal: Double = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,13 +79,16 @@ class DailyFragment : Fragment() {
     }
 
     private fun setupIncomeListView() {
-        incomeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1)
+        incomeAdapter = IncomeAdapter(requireContext())
         binding.incomeListView.adapter = incomeAdapter
 
         viewModel.allInCome.observe(viewLifecycleOwner) { incomeList ->
             incomeList?.let {
                 incomeAdapter.clear()
                 incomeAdapter.addAll(incomeList)
+
+                incomeTotal = incomeList.sumOf { it.amount!! }
+                binding.incomeAmount.text = incomeTotal.toString()
             }
         }
     }
