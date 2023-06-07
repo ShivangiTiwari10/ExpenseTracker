@@ -99,7 +99,7 @@ class DailyFragment : Fragment() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     val note = result.data?.getSerializableExtra("expense") as? Expense
-                    val note2 = result.data?.getSerializableExtra("income") as? Income
+                    val note2 = result.data?.   getSerializableExtra("income") as? Income
                     if (note != null) {
                         viewModel.addExpense(note)
                     }
