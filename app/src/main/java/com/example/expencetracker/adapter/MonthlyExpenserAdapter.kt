@@ -36,4 +36,6 @@ class MonthlyExpenserAdapter(context: Context) :
 
             return itemView!!
     }
+
+
 }

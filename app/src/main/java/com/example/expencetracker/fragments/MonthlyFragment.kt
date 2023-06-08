@@ -11,7 +11,9 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.expencetracker.Database.TrackerDatabase
 import com.example.expencetracker.adapter.MonthalyAdapter
+import com.example.expencetracker.adapter.MonthlyExpenserAdapter
 import com.example.expencetracker.databinding.FragmentMonthlyBinding
+import com.example.expencetracker.model.Expense
 import com.example.expencetracker.model.Income
 import com.example.expencetracker.model.trackerViewModel
 import java.util.Calendar
@@ -28,6 +30,7 @@ class MonthlyFragment : Fragment() {
     lateinit var viewModel: trackerViewModel
 
     private lateinit var monthIncomeAdapter: ArrayAdapter<Income>
+    private lateinit var monthExpenseAdapter: ArrayAdapter<Expense>
 
     private var munthIncomeTotal: Double = 0.0
 
@@ -81,10 +84,13 @@ class MonthlyFragment : Fragment() {
             toggleDatePickerVisibility()
         }
         setupIncomeListView()
+        setupExpenseListView()
 
         return binding.root
 
     }
+
+    //    show all income in monthly fragment
 
     private fun setupIncomeListView() {
         monthIncomeAdapter = MonthalyAdapter(requireContext())
@@ -101,6 +107,22 @@ class MonthlyFragment : Fragment() {
         }
     }
 
+//    show all expenses in monthly fragment
+
+    private fun setupExpenseListView() {
+        monthExpenseAdapter = MonthlyExpenserAdapter(requireContext())
+        binding.listView2.adapter = monthExpenseAdapter
+
+        viewModel.allExpense.observe(viewLifecycleOwner) { expenseList ->
+            expenseList?.let {
+                monthExpenseAdapter.clear()
+                (monthExpenseAdapter as MonthlyExpenserAdapter).addAll(expenseList)
+
+                munthIncomeTotal = expenseList.sumOf { it.amount!! }
+                binding.expenseTotal.text = munthIncomeTotal.toString()
+            }
+        }
+    }
 
 
     private fun toggleDatePickerVisibility() {
