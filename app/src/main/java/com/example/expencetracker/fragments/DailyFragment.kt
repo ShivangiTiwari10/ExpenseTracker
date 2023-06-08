@@ -60,8 +60,6 @@ class DailyFragment : Fragment() {
         setupIncomeListView()
 
         return binding.root
-
-
     }
 
     private fun setupExpenseListView() {
@@ -74,6 +72,8 @@ class DailyFragment : Fragment() {
                 expenseAdapter.addAll(expenseList)
                 expenseTotal = expenseList.sumOf { it.amount!! }
                 binding.expenseAmount.text = expenseTotal.toString()
+
+
             }
         }
     }
@@ -91,6 +91,8 @@ class DailyFragment : Fragment() {
                 binding.incomeAmount.text = incomeTotal.toString()
             }
         }
+
+
     }
 
     private fun initUi() {
@@ -99,7 +101,7 @@ class DailyFragment : Fragment() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     val note = result.data?.getSerializableExtra("expense") as? Expense
-                    val note2 = result.data?.   getSerializableExtra("income") as? Income
+                    val note2 = result.data?.getSerializableExtra("income") as? Income
                     if (note != null) {
                         viewModel.addExpense(note)
                     }
@@ -114,6 +116,7 @@ class DailyFragment : Fragment() {
             Log.d("Intent", "$intent")
         }
     }
+
 
 }
 
