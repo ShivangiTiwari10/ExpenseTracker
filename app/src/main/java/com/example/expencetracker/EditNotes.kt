@@ -48,6 +48,7 @@ class EditNotes : AppCompatActivity() {
             val text = binding.textInputLayout.text.toString()
             val amount = binding.amountInputLayout.text.toString().toDoubleOrNull()
             val detail = binding.textDetail.text.toString()
+            val date = binding.date.text.toString()
 
             if (text.isNotEmpty() && amount != null && detail.isNotEmpty()) {
 
@@ -58,7 +59,7 @@ class EditNotes : AppCompatActivity() {
                     intent.putExtra("expense", expense)
                     setResult(Activity.RESULT_OK, intent)
                 } else {
-                    val income = Income(null, text, amount, detail)
+                    val income = Income(null, text, amount, detail )
 
                     val intent = Intent()
                     intent.putExtra("income", income)

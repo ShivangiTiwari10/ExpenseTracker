@@ -10,7 +10,9 @@ data class Expense(
     @PrimaryKey(autoGenerate = true) val id: Int?,
     @ColumnInfo(name ="text")val text:String?,
     @ColumnInfo(name="amount") val amount:Double?,
-    @ColumnInfo(name="detail") val detail:String?
+    @ColumnInfo(name="detail") val detail:String?,
+
+
 
 ): java.io.Serializable
 
