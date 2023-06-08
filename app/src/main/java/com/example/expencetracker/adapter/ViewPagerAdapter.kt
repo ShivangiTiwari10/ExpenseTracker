@@ -10,6 +10,7 @@ import com.example.expencetracker.fragments.PenFragment
 import com.example.expencetracker.fragments.YearlyFragment
 
 class viewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):FragmentStateAdapter(fragmentManager,lifecycle) {
+
     override fun getItemCount(): Int {
         return 4
     }
@@ -24,4 +25,5 @@ class viewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):F
             else -> DailyFragment()
         }
     }
+
 }

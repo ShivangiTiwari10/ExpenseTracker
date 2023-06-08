@@ -37,14 +37,14 @@
                 android:id="@+id/tv_Amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="1dp"
                 android:maxLines="10"
                 android:padding="8dp"
                 android:text="@string/amount"
-                android:layout_alignParentEnd="true"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-
                 tools:ignore="RelativeOverlap" />
         </RelativeLayout>
 

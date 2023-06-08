@@ -21,4 +21,8 @@
     <string name="income">Income</string>
     <string name="current_date">Current Date</string>
     <string name="date">Date</string>
+    <string name="total_expenses">total Expense =</string>
+    <string name="total_incomes">total income =</string>
+    <string name="incometotal">incomeTotal</string>
+    <string name="expense_total">Expense Total</string>
 </resources>
