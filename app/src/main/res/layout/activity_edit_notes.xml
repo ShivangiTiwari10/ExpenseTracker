@@ -14,14 +14,27 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp">
 
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="388dp"
+            android:layout_height="51dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/date"
+            tools:layout_editor_absoluteY="-3dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/expencebtn"
@@ -40,6 +53,7 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/income_credit"
                 app:cornerRadius="15dp" />
+
         </LinearLayout>
 
 
@@ -48,11 +62,11 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            android:hint="@string/enter_text"
-            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
-            app:layout_constraintStart_toStartOf="parent"
             android:autofillHints=""
-            android:inputType="text" />
+            android:hint="@string/enter_text"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="@+id/amountInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/amountInputLayout"
@@ -60,11 +74,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="7dp"
-            android:hint="@string/ammount"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             android:autofillHints=""
-            android:inputType="number" />
+            android:hint="@string/ammount"
+            android:inputType="number"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
         <ImageView
@@ -82,13 +96,14 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="@string/descibe_here"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
             android:autofillHints=""
-            android:inputType="text" />
+            android:hint="@string/descibe_here"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </com.google.android.material.card.MaterialCardView>
