@@ -1,5 +1,6 @@
 package com.example.expencetracker.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -92,6 +93,7 @@ class MonthlyFragment : Fragment() {
 
     //    show all income in monthly fragment
 
+    @SuppressLint("SetTextI18n")
     private fun setupIncomeListView() {
         monthIncomeAdapter = MonthalyAdapter(requireContext())
         binding.listView1.adapter = monthIncomeAdapter
@@ -102,13 +104,14 @@ class MonthlyFragment : Fragment() {
                 monthIncomeAdapter.addAll(incomeList)
 
                 munthIncomeTotal = incomeList.sumOf { it.amount!! }
-                binding.incomeTotal.text = munthIncomeTotal.toString()
+                binding.totalIncome.text ="Total Income=$munthIncomeTotal"
             }
         }
     }
 
 //    show all expenses in monthly fragment
 
+    @SuppressLint("SetTextI18n")
     private fun setupExpenseListView() {
         monthExpenseAdapter = MonthlyExpenserAdapter(requireContext())
         binding.listView2.adapter = monthExpenseAdapter
@@ -119,7 +122,7 @@ class MonthlyFragment : Fragment() {
                 (monthExpenseAdapter as MonthlyExpenserAdapter).addAll(expenseList)
 
                 munthIncomeTotal = expenseList.sumOf { it.amount!! }
-                binding.expenseTotal.text = munthIncomeTotal.toString()
+                binding.totalExpense.text ="total expense=$munthIncomeTotal"
             }
         }
     }

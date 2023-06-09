@@ -7,12 +7,14 @@
     android:padding="8dp"
     tools:context=".fragments.DailyFragment">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/calender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="8dp"
+        android:padding="10dp"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="#DDD8E8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date"
+            android:layout_marginStart="8dp"
             tools:ignore="RelativeOverlap"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -28,7 +31,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <RelativeLayout
