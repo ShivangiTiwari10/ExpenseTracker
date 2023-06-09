@@ -1,6 +1,7 @@
 package com.example.expencetracker.fragments
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,8 @@ import com.example.expencetracker.databinding.FragmentDailyBinding
 import com.example.expencetracker.model.Expense
 import com.example.expencetracker.model.Income
 import com.example.expencetracker.model.trackerViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DailyFragment : Fragment() {
@@ -31,6 +34,8 @@ class DailyFragment : Fragment() {
 
     private var expenseTotal: Double = 0.0
     private var incomeTotal: Double = 0.0
+
+    private var selectedDate: Calendar = Calendar.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +64,7 @@ class DailyFragment : Fragment() {
         setupExpenseListView()
         setupIncomeListView()
 
+        updateSelectedDateText()
         return binding.root
     }
 
@@ -115,7 +121,43 @@ class DailyFragment : Fragment() {
             getContent.launch(intent)
             Log.d("Intent", "$intent")
         }
+
+//        show date picker
+        binding.calender.setOnClickListener {
+            showDatePickerDialog()
+        }
     }
+
+    private fun showDatePickerDialog() {
+
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            // Update the selected date
+            selectedDate.set(Calendar.YEAR, year)
+            selectedDate.set(Calendar.MONTH, monthOfYear)
+            selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            // Update the TextView with the selected date, month, and year
+            updateSelectedDateText()
+        }
+
+        // Create a DatePickerDialog with the current selected date
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            dateSetListener,
+            selectedDate.get(Calendar.YEAR),
+            selectedDate.get(Calendar.MONTH),
+            selectedDate.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+
+    }
+
+    private fun updateSelectedDateText() {
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        val selectedDateString = dateFormat.format(selectedDate.time)
+        binding.idTVDate.text = selectedDateString
+    }
+
 
 
 }
