@@ -67,20 +67,20 @@ class DailyFragment : Fragment() {
         )[trackerViewModel::class.java]
         dataBase = TrackerDatabase.getDataBase(requireContext())
 
+//
+//        val buttonPrevious = binding.previous
+//        val buttonNext = binding.next
 
-        val buttonPrevious = binding.previous
-        val buttonNext = binding.next
 
-
-        buttonPrevious.setOnClickListener {
-            selectedDates.add(Calendar.DAY_OF_MONTH, -1)
-            updateSelectedDateText()
-        }
-
-        buttonNext.setOnClickListener {
-            selectedDates.add(Calendar.DAY_OF_MONTH, 1)
-            updateSelectedDateText()
-        }
+//        buttonPrevious.setOnClickListener {
+//            selectedDates.add(Calendar.DAY_OF_MONTH, -1)
+//            updateSelectedDateText()
+//        }
+//
+//        buttonNext.setOnClickListener {
+//            selectedDates.add(Calendar.DAY_OF_MONTH, 1)
+//            updateSelectedDateText()
+//        }
             setupExpenseListView()
         setupIncomeListView()
 
@@ -92,44 +92,15 @@ class DailyFragment : Fragment() {
         expenseAdapter = ExpenseAdapter(requireContext())
         binding.expenseListView.adapter = expenseAdapter
 
-//        val selectedDate = "2023-06-09" // Replace with your selected date
 
-
-        viewModel.getExpensesForDate.observe(viewLifecycleOwner) { expenseList ->
+        viewModel.allExpense.observe(viewLifecycleOwner) { expenseList ->
             expenseList?.let {
                 expenseAdapter.clear()
                 expenseAdapter.addAll(expenseList)
-                expenseTotal = expenseList.sumOf { it.amount ?: 0.0 }
+                expenseTotal = expenseList.sumOf { it.amount!! }
                 binding.expenseAmount.text = expenseTotal.toString()
             }
         }
-
-
-//        viewModel.allExpense.observe(viewLifecycleOwner) { expenseList ->
-//            expenseList?.let {
-//                expenseAdapter.clear()
-//                expenseAdapter.addAll(expenseList)
-//                expenseTotal = expenseList.sumOf { it.amount!! }
-//                binding.expenseAmount.text = expenseTotal.toString()
-//
-//
-//            }
-//        }
-
-//            val selectedDate =
-//                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDates.time)
-//            val expensesForDate = viewModel.getExpensesForDate(selectedDate)
-//
-//            viewModel.getExpensesForDate.observe(viewLifecycleOwner) {
-//                    expenseList ->
-//            expenseList?.let {
-//                expenseAdapter.clear()
-//                expenseAdapter.addAll(expenseList)
-//                expenseTotal = expenseList.sumOf { it.amount!! }
-//                binding.expenseAmount.text = expenseTotal.toString()
-//            }
-//
-//        }
 
     }
 
@@ -159,7 +130,7 @@ class DailyFragment : Fragment() {
                         val note2 = result.data?.getSerializableExtra("income") as? Income
                         if (note != null) {
                             viewModel.addExpense(note)
-                            viewModel.getExpensesForDate
+//                            viewModel.getExpensesForDate
                         }
                         if (note2 != null) {
                             viewModel.addIncome(note2)
@@ -208,9 +179,7 @@ class DailyFragment : Fragment() {
             val selectedDateString = dateFormat.format(selectedDates.time)
             binding.idTVDate.text = selectedDateString
 
-            val selectedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDates.time)
 
-            viewModel.getExpensesForDate()
         }
 
 
