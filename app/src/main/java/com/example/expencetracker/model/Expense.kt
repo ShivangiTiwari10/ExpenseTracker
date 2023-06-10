@@ -11,6 +11,7 @@ data class Expense(
     @ColumnInfo(name ="text")val text:String?,
     @ColumnInfo(name="amount") val amount:Double?,
     @ColumnInfo(name="detail") val detail:String?,
+    val date: String
 
 
 

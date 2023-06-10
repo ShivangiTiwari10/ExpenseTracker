@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.example.expencetracker.R
 import com.example.expencetracker.model.Expense
 
+// Structure of list itenm
 class ExpenseAdapter(context: Context) : ArrayAdapter<Expense>(
     context, R.layout.edit_text_layout
 ) {

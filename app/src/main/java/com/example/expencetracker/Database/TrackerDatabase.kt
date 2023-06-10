@@ -9,7 +9,7 @@ import com.example.expencetracker.model.Income
 import com.example.expencetracker.utilities.DATABASE_NAME
 
 
-@Database(entities = [Expense::class, Income::class], version = 2)
+@Database(entities = [Expense::class, Income::class], version = 3)
 abstract class TrackerDatabase : RoomDatabase() {
 
     abstract fun getexpenceDao(): ExpenseDao

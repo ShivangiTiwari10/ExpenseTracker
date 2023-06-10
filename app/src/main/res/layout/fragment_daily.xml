@@ -18,12 +18,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+
         <TextView
             android:id="@+id/idTVDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="50dp"
             tools:ignore="RelativeOverlap"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -31,6 +33,22 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/previous"
+            android:layout_width="37dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="16dp"
+            android:src="@android:drawable/ic_media_previous"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="300dp"
+            android:src="@android:drawable/ic_media_next" />
+
     </androidx.cardview.widget.CardView>
 
 
