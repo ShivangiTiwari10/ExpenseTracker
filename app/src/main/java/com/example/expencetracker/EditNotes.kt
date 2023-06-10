@@ -53,13 +53,13 @@ class EditNotes : AppCompatActivity() {
             if (text.isNotEmpty() && amount != null && detail.isNotEmpty()) {
 
                 if (isExpenseButtonActive) {
-                    val expense = Expense(null, text, amount, detail,date)
+                    val expense = Expense(null, text, amount, detail, date )
                     val intent = Intent()
 
                     intent.putExtra("expense", expense)
                     setResult(Activity.RESULT_OK, intent)
                 } else {
-                    val income = Income(null, text, amount, detail )
+                    val income = Income(null, text, amount, detail,date )
 
                     val intent = Intent()
                     intent.putExtra("income", income)

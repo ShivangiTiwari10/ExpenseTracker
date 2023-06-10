@@ -15,18 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/idTVDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="@string/current_date"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
 
         <DatePicker
@@ -87,48 +75,61 @@
         android:textSize="18sp"
         />
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constaint"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/tv_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_alignParentTop="true"
+            android:fontFamily="monospace"
+            android:text="@string/income"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tv_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="monospace"
+            android:text="@string/expense"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
+
+
+    </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/date"
-            >
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <ListView
                 android:id="@+id/listView1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <ListView
                 android:id="@+id/listView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

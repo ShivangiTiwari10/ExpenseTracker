@@ -9,9 +9,10 @@ import androidx.room.PrimaryKey
 data class Income(
 
     @PrimaryKey(autoGenerate = true) val id: Int?,
-    @ColumnInfo(name ="text")val text:String?,
+    @ColumnInfo(name ="text") val text:String?,
     @ColumnInfo(name="amount") val amount:Double?,
-    @ColumnInfo(name="detail") val detail:String?
+    @ColumnInfo(name="detail") val detail:String?,
+    @ColumnInfo(name = "date") val date: String?
 
 
 ): java.io.Serializable

@@ -1,5 +1,6 @@
 package com.example.expencetracker.fragments
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -49,6 +50,7 @@ class DailyFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,21 +69,8 @@ class DailyFragment : Fragment() {
         )[trackerViewModel::class.java]
         dataBase = TrackerDatabase.getDataBase(requireContext())
 
-//
-//        val buttonPrevious = binding.previous
-//        val buttonNext = binding.next
 
-
-//        buttonPrevious.setOnClickListener {
-//            selectedDates.add(Calendar.DAY_OF_MONTH, -1)
-//            updateSelectedDateText()
-//        }
-//
-//        buttonNext.setOnClickListener {
-//            selectedDates.add(Calendar.DAY_OF_MONTH, 1)
-//            updateSelectedDateText()
-//        }
-            setupExpenseListView()
+        setupExpenseListView()
         setupIncomeListView()
 
         updateSelectedDateText()
@@ -104,86 +93,89 @@ class DailyFragment : Fragment() {
 
     }
 
-        private fun setupIncomeListView() {
-            incomeAdapter = IncomeAdapter(requireContext())
-            binding.incomeListView.adapter = incomeAdapter
+    private fun setupIncomeListView() {
+        incomeAdapter = IncomeAdapter(requireContext())
+        binding.incomeListView.adapter = incomeAdapter
 
-            viewModel.allInCome.observe(viewLifecycleOwner) { incomeList ->
-                incomeList?.let {
-                    incomeAdapter.clear()
-                    incomeAdapter.addAll(incomeList)
+        viewModel.allInCome.observe(viewLifecycleOwner) { incomeList ->
+            incomeList?.let {
+                incomeAdapter.clear()
+                incomeAdapter.addAll(incomeList)
 
-                    incomeTotal = incomeList.sumOf { it.amount!! }
-                    binding.incomeAmount.text = incomeTotal.toString()
-                }
+                incomeTotal = incomeList.sumOf { it.amount!! }
+                binding.incomeAmount.text = incomeTotal.toString()
             }
-
-
-        }
-
-        private fun initUi() {
-
-            val getContent =
-                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                    if (result.resultCode == Activity.RESULT_OK) {
-                        val note = result.data?.getSerializableExtra("expense") as? Expense
-                        val note2 = result.data?.getSerializableExtra("income") as? Income
-                        if (note != null) {
-                            viewModel.addExpense(note)
-//                            viewModel.getExpensesForDate
-                        }
-                        if (note2 != null) {
-                            viewModel.addIncome(note2)
-                        }
-                    }
-                }
-            binding.floatingActionButton.setOnClickListener {
-                val intent = Intent(requireContext(), EditNotes::class.java)
-                getContent.launch(intent)
-                Log.d("Intent", "$intent")
-            }
-
-//        show date picker
-            binding.calender.setOnClickListener {
-                showDatePickerDialog()
-            }
-        }
-
-        private fun showDatePickerDialog() {
-
-            val dateSetListener =
-                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                    // Update the selected date
-                    selectedDates.set(Calendar.YEAR, year)
-                    selectedDates.set(Calendar.MONTH, monthOfYear)
-                    selectedDates.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-                    // Update the TextView with the selected date, month, and year
-                    updateSelectedDateText()
-                }
-
-            // Create a DatePickerDialog with the current selected date
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                dateSetListener,
-                selectedDates.get(Calendar.YEAR),
-                selectedDates.get(Calendar.MONTH),
-                selectedDates.get(Calendar.DAY_OF_MONTH)
-            )
-            datePickerDialog.show()
-
-        }
-
-        private fun updateSelectedDateText() {
-            val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-            val selectedDateString = dateFormat.format(selectedDates.time)
-            binding.idTVDate.text = selectedDateString
-
-
         }
 
 
     }
+
+    private fun initUi() {
+
+        val getContent =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val note = result.data?.getSerializableExtra("expense") as? Expense
+                    val note2 = result.data?.getSerializableExtra("income") as? Income
+                    if (note != null) {
+                        viewModel.addExpense(note)
+                            viewModel.getExpensesForDate
+                    }
+                    if (note2 != null) {
+                        viewModel.addIncome(note2)
+                    }
+                }
+            }
+        binding.floatingActionButton.setOnClickListener {
+            val intent = Intent(requireContext(), EditNotes::class.java)
+            getContent.launch(intent)
+            Log.d("Intent", "$intent")
+        }
+
+//        show date picker
+        binding.calender.setOnClickListener {
+            showDatePickerDialog()
+        }
+    }
+
+    private fun showDatePickerDialog() {
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                // Update the selected date
+                selectedDates.set(Calendar.YEAR, year)
+                selectedDates.set(Calendar.MONTH, monthOfYear)
+                selectedDates.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+                // Update the TextView with the selected date, month, and year
+                updateSelectedDateText()
+            }
+
+        // Create a DatePickerDialog with the current selected date
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            dateSetListener,
+            selectedDates.get(Calendar.YEAR),
+            selectedDates.get(Calendar.MONTH),
+            selectedDates.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+
+    }
+
+    private fun updateSelectedDateText() {
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        val selectedDateString = dateFormat.format(selectedDates.time)
+        binding.idTVDate.text = selectedDateString
+
+        val date = binding.idTVDate.text
+
+        val intent = Intent()
+        intent.putExtra("date", date)
+    }
+
+
+}
 
 
 
