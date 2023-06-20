@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class DailyFragment : Fragment() {
+class DailyFragment : Fragment(),ExpenseAdapter.ExpenseClicklistner {
 
     private lateinit var binding: FragmentDailyBinding
 
@@ -40,7 +40,6 @@ class DailyFragment : Fragment() {
     private var incomeTotal: Double = 0.0
 
     private var selectedDates: Calendar = Calendar.getInstance()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -172,6 +171,11 @@ class DailyFragment : Fragment() {
 
         val intent = Intent()
         intent.putExtra("date", date)
+    }
+
+
+    override fun onLongItemClicked(expense: Expense) {
+
     }
 
 

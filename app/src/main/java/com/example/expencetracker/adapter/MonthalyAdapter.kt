@@ -1,5 +1,6 @@
 package com.example.expencetracker.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,22 +10,27 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.expencetracker.R
 import com.example.expencetracker.model.Income
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MonthalyAdapter(context: Context) : ArrayAdapter<Income>(
-    context, R.layout.monthaly_item
+    context, R.layout.income_card
 ) {
 
+
+    @SuppressLint("SimpleDateFormat")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         var itemView = convertView
         if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.monthaly_item, parent, false)
+            itemView = LayoutInflater.from(context).inflate(R.layout.income_card, parent, false)
         }
 
         val income = getItem(position)
 
-        val incomeText = itemView?.findViewById<TextView>(R.id.Texts)
-        val incomeAmount = itemView?.findViewById<TextView>(R.id.amount)
+        val incomeText = itemView?.findViewById<TextView>(R.id.texts)
+        val incomeAmount = itemView?.findViewById<TextView>(R.id.amounts)
+        val incomeDate = itemView?.findViewById<TextView>(R.id.Datess)
 
         if (incomeText != null) {
             incomeText.text = income?.text
@@ -34,8 +40,17 @@ class MonthalyAdapter(context: Context) : ArrayAdapter<Income>(
             Log.d("Amount", income?.amount.toString())
         }
 
+        val date= Date()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDate = dateFormat.format(date)
+
+
+        if (incomeDate != null) {
+            incomeDate.text = formattedDate
+        }
         return itemView!!
-
     }
-
 }
+
+
+

@@ -15,14 +15,14 @@ class trackerViewModel(application: Application) : AndroidViewModel(application)
     private var repository: TrackerRepository
 
     val allExpense: LiveData<List<Expense>>
-    val getExpensesForDate :LiveData<List<Expense>>
+    val getExpensesForDate: LiveData<List<Expense>>
 
     val allInCome: LiveData<List<Income>>
 
     init {
         val dao = TrackerDatabase.getDataBase(application).getexpenceDao()
         repository = TrackerRepository(dao)
-        getExpensesForDate= repository.allExpense
+        getExpensesForDate = repository.allExpense
     }
 
     init {
@@ -39,7 +39,6 @@ class trackerViewModel(application: Application) : AndroidViewModel(application)
     }
 
 
-
     fun addExpense(expense: Expense) = viewModelScope.launch(Dispatchers.IO) {
         repository.addExpense(expense)
     }
@@ -49,8 +48,13 @@ class trackerViewModel(application: Application) : AndroidViewModel(application)
         repository.addIncome(income)
     }
 
-    fun getExpensesForDate()= viewModelScope.launch(Dispatchers.IO) {
-        repository.getExpensesForDate()
+    fun deleteIncome(income: Income) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteIncome(income)
     }
+
+    fun deleteExpense(expense: Expense) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteExpense(expense)
+    }
+
 
 }

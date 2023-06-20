@@ -40,6 +40,11 @@ class ExpenseAdapter(context: Context) : ArrayAdapter<Expense>(
 
         return itemView!!
     }
+    interface ExpenseClicklistner {
+
+
+        fun onLongItemClicked(expense: Expense)
+    }
 
 
 }

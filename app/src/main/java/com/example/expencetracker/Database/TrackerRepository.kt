@@ -11,14 +11,15 @@ class TrackerRepository(private val expencedao: ExpenseDao) {
 
     val allIncome: LiveData<List<Income>> = expencedao.getAllIncome()
 
-//    val allExpanseWithDate: LiveData<List<Expense>> = expencedao.getExpensesForDate("String")
-
-    //
     suspend fun addExpense(expence: Expense) {
         expencedao.insert(expence)
 
     }
     suspend fun deleteExpense(expense: Expense) {
+        expencedao.delete(expense)
+    }
+
+    suspend fun deleteIncome(expense: Income) {
         expencedao.delete(expense)
     }
 
@@ -28,9 +29,7 @@ class TrackerRepository(private val expencedao: ExpenseDao) {
     }
 
 
-    fun getExpensesForDate(): LiveData<List<Expense>> {
-        return expencedao.getExpensesForDate()
-    }
+
 
 
 

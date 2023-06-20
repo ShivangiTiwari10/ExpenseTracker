@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.expencetracker.Database.TrackerDatabase
 import com.example.expencetracker.adapter.MonthalyAdapter
@@ -17,15 +15,11 @@ import com.example.expencetracker.databinding.FragmentMonthlyBinding
 import com.example.expencetracker.model.Expense
 import com.example.expencetracker.model.Income
 import com.example.expencetracker.model.trackerViewModel
-import java.util.Calendar
 
 
 class MonthlyFragment : Fragment() {
 
     private lateinit var binding: FragmentMonthlyBinding
-
-    lateinit var dateTV: TextView
-    lateinit var datepicker: DatePicker
 
     private lateinit var dataBase: TrackerDatabase
     lateinit var viewModel: trackerViewModel
@@ -59,31 +53,8 @@ class MonthlyFragment : Fragment() {
         dataBase = TrackerDatabase.getDataBase(requireContext())
 
 
-        dateTV = binding.idTVDate
-        datepicker = binding.datePicker
 
-        val today = Calendar.getInstance()
 
-        // Set the initial date text
-        val initialMonth = today.get(Calendar.MONTH) + 1
-        dateTV.text = initialMonth.toString()
-
-        // Set the TextView click listener
-        dateTV.setOnClickListener {
-            toggleDatePickerVisibility()
-        }
-
-        datepicker.init(
-            today.get(Calendar.YEAR), today.get(Calendar.MONTH),
-            today.get(Calendar.DAY_OF_MONTH)
-        ) { _, year, month, day ->
-            val Date = (day.toString() + "-"
-                    + (month + 1) + "-" + year)
-
-            dateTV.text = Date
-
-            toggleDatePickerVisibility()
-        }
         setupIncomeListView()
         setupExpenseListView()
 
@@ -123,17 +94,8 @@ class MonthlyFragment : Fragment() {
 
                 munthIncomeTotal = expenseList.sumOf { it.amount!! }
                 binding.totalExpense.text ="total expense=$munthIncomeTotal"
+
             }
-        }
-    }
-
-
-    private fun toggleDatePickerVisibility() {
-
-        if (datepicker.visibility == View.VISIBLE) {
-            datepicker.visibility = View.GONE
-        } else {
-            datepicker.visibility = View.VISIBLE
         }
     }
 
