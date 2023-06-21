@@ -27,4 +27,7 @@
     <string name="expense_total">Expense Total</string>
     <string name="balance">Balance</string>
     <string name="month">Month</string>
+    <string name="enter_task">enter task</string>
+    <string name="enter_detail">Enter Detail</string>
+    <string name="save_task">Save Task</string>
 </resources>
