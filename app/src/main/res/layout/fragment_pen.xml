@@ -7,17 +7,6 @@
     tools:context=".fragments.PenFragment">
 
 
-    <TextView
-        android:id="@+id/month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/month"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb"
@@ -41,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
     </androidx.recyclerview.widget.RecyclerView>
 
