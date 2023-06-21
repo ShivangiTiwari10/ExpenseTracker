@@ -28,6 +28,9 @@ class MonthlyFragment : Fragment() {
     private lateinit var monthExpenseAdapter: ArrayAdapter<Expense>
 
     private var munthIncomeTotal: Double = 0.0
+    private var munthExpenseTotal: Double = 0.0
+
+    private var totalBalance: Double = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +55,6 @@ class MonthlyFragment : Fragment() {
         )[trackerViewModel::class.java]
         dataBase = TrackerDatabase.getDataBase(requireContext())
 
-
-
-
         setupIncomeListView()
         setupExpenseListView()
 
@@ -76,6 +76,8 @@ class MonthlyFragment : Fragment() {
 
                 munthIncomeTotal = incomeList.sumOf { it.amount!! }
                 binding.totalIncome.text ="Total Income=$munthIncomeTotal"
+                calculateTotalBalance()
+
             }
         }
     }
@@ -92,11 +94,18 @@ class MonthlyFragment : Fragment() {
                 monthExpenseAdapter.clear()
                 (monthExpenseAdapter as MonthlyExpenserAdapter).addAll(expenseList)
 
-                munthIncomeTotal = expenseList.sumOf { it.amount!! }
-                binding.totalExpense.text ="total expense=$munthIncomeTotal"
-
+                munthExpenseTotal = expenseList.sumOf { it.amount!! }
+                binding.totalExpense.text ="total expense=$munthExpenseTotal"
+                calculateTotalBalance()
             }
         }
+    }
+
+//    function to calculate total balance
+    @SuppressLint("SetTextI18n")
+    private fun calculateTotalBalance() {
+        totalBalance = munthIncomeTotal - munthExpenseTotal
+        binding.balance.text = "Total Balance = $totalBalance"
     }
 
 
