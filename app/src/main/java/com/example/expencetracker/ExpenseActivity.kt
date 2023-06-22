@@ -37,7 +37,7 @@ class ExpenseActivity : AppCompatActivity() {
 
                 }
                 2 -> {
-                    tab.text = "Monthly"
+                    tab.text = "Dashboard"
                 }
                 3 -> {
                     tab.text = "Yearly"

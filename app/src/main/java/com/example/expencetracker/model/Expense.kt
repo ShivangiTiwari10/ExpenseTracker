@@ -14,7 +14,6 @@ data class Expense(
     @ColumnInfo(name="detail") val detail:String?,
 
 
-
 ): java.io.Serializable
 
 

@@ -50,6 +50,7 @@ class MonthalyAdapter(context: Context) : ArrayAdapter<Income>(
         }
         return itemView!!
     }
+
 }
 
 

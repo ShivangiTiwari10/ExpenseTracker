@@ -13,5 +13,4 @@ data class Income(
     @ColumnInfo(name="amount") val amount:Double?,
     @ColumnInfo(name="detail") val detail:String?,
 
-
 ): java.io.Serializable
