@@ -1,39 +1,44 @@
 package com.example.expencetracker.adapter
 
-import android.annotation.SuppressLint
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.expencetracker.R
 import com.example.expencetracker.model.ToDoModel
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TodoAdapter(val list: List<ToDoModel>) : RecyclerView.Adapter<TodoAdapter.ToDoViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
-        TODO("Not yet implemented")
+        return ToDoViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_todo, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
-//        holder.(list[position])
+        holder.bind(list[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return list.size
     }
 
     class ToDoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        @SuppressLint("SimpleDateFormat")
-        private fun updateDate(time: Long) {
-            //Mon, 5 Jan 2020
+        fun bind(toDoModel: ToDoModel) {
+            with(itemView) {
+            val txtShowTitle = findViewById<TextView>(R.id.txtShowTitle)
+            val txtShowTask = findViewById<TextView>(R.id.txtShowTask)
+//            val txtShowCategory = findViewById<TextView>(R.id.txtShowCategory)
 
-            val sdf = SimpleDateFormat("EEE, d MMM yyyy")
-//            itemView.findViewById<TextView>().text = sdf.format(Date(time))
+                txtShowTitle.text = toDoModel.title
+                txtShowTask.text = toDoModel.description
+            }
 
         }
-
     }
 
 }
