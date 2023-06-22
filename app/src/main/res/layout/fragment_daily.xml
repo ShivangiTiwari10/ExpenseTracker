@@ -7,60 +7,14 @@
     android:padding="8dp"
     tools:context=".fragments.DailyFragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/calender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="10dp"
-        app:cardCornerRadius="5dp"
-        android:backgroundTint="#DDD8E8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-
-        <TextView
-            android:id="@+id/idTVDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date"
-            android:layout_marginStart="50dp"
-            tools:ignore="RelativeOverlap"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="5dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/previous"
-            android:layout_width="37dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="16dp"
-            android:src="@android:drawable/ic_media_previous"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageButton
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginStart="300dp"
-            android:src="@android:drawable/ic_media_next" />
-
-    </androidx.cardview.widget.CardView>
-
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calender">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
