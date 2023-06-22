@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class ToDoModel(
     var title: String,
     var description: String,
-    var isFinished: Int = 0,
+    var isFinished: Long = 0,
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
 

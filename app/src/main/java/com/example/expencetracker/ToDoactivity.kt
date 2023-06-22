@@ -42,6 +42,7 @@ class ToDoactivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
     @OptIn(DelicateCoroutinesApi::class)
     private fun saveToDo() {
 
@@ -56,7 +57,8 @@ class ToDoactivity : AppCompatActivity(), View.OnClickListener {
                     return@withContext db.todoDao().insertTask(
                         ToDoModel(
                             title,
-                            description,
+                            description
+
                         )
 
                     )
