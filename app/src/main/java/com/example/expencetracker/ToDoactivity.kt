@@ -28,7 +28,7 @@ class ToDoactivity : AppCompatActivity(), View.OnClickListener {
 
         binding = ActivityToDoactivityBinding.inflate(layoutInflater)
 
-
+        supportActionBar?.hide()
         setContentView(binding.root)
         binding.saveBtn.setOnClickListener(this)
 
