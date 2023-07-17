@@ -84,7 +84,7 @@ class EditNotes : AppCompatActivity() {
             inputMethodManager.hideSoftInputFromWindow(view.applicationWindowToken, 0)
 
             // displaying toast message on below line.
-            Toast.makeText(this, "Key board hidden", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "your action added", Toast.LENGTH_SHORT).show()
         }
 
     }
